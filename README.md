@@ -1,18 +1,18 @@
-## docker image for symfony project 
+## Docker image for symfony project 
 _(Docker ready to use)_
 
 
-This docker image is tested for symfony 3 and 4
+This docker image is tested for symfony 3 and 4 projects
 along with other database supporting docker images such as 
 <a target="_blank" href="https://hub.docker.com/_/mysql">mysql:5.7</a>, 
 <a target="_blank" href="https://hub.docker.com/r/phpmyadmin/phpmyadmin">phpmyadmin/phpmyadmin</a>
 
 
-for the image tags reference visit: [theva/docker-symfony](https://cloud.docker.com/repository/docker/theva/docker-symfony)
+Image tags reference : [theva/docker-symfony](https://cloud.docker.com/repository/docker/theva/docker-symfony)
 
-#How to use
+# How to use
 
-##Simple usage (without ssl)
+## Simple usage (without ssl)
 
 1. Create your <code>docker-compose.yml</code> as simple as you see in [<code>docker-symfony/docker-compose/simple/docker-compose.yml</code>](https://github.com/latheva/docker-symfony/blob/master/docker-compose/simple/docker-compose.yml)
 
@@ -23,7 +23,8 @@ for the image tags reference visit: [theva/docker-symfony](https://cloud.docker.
 3. if there is no build error and if the containers are created, then you can access your site
 at http://app.local
 
-##Enable SSL
+## Enable SSL
+
 if you are need of your docker container (local server) be supported for ssl, do a slight changes on your own Dockerfile
 as follows
 
