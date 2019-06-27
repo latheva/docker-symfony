@@ -25,8 +25,7 @@ at http://app.local
 
 ## Enable SSL
 
-if you are need of your docker container (local server) be supported for ssl, do a slight changes on your own Dockerfile
-as follows
+if you are need of your docker container (local server) be supported for ssl, follow these steps
 
 1. Add these files somewhere in to your project directory
     1. docker-symfony/certs/cert.key
