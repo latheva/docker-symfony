@@ -78,7 +78,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 
 # Install Git
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git && apt-get install -y git-ftp
 
 # Install Wget
 RUN apt-get update && apt-get install -y wget
