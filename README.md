@@ -1,5 +1,5 @@
-## Docker image for symfony project 
-_(Docker ready to use)_
+## Docker-symfony
+_(Docker image ready to use)_
 
 
 This docker image is tested for symfony 3 and 4 projects
