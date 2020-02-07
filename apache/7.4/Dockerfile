@@ -1,6 +1,11 @@
-FROM php:7.2-apache
+FROM php:7.4-apache
 
 WORKDIR /var/www
+
+# avoid warnings
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 
 # Enable intl
 RUN apt-get update && apt-get install -y zlib1g-dev libicu-dev g++
@@ -15,8 +20,8 @@ RUN docker-php-ext-install soap
 
 # Install mcrypt libpng
 RUN apt-get update -y && apt-get install -y libmcrypt-dev libpng-dev
-RUN pecl install mcrypt-1.0.1
-RUN docker-php-ext-enable mcrypt
+#RUN pecl install mcrypt-1.0.2
+#RUN docker-php-ext-enable mcrypt
 
 # Install mbstring
 #RUN docker-php-ext-install mbstring
@@ -29,11 +34,11 @@ RUN docker-php-ext-install gd
 # Install libsodium for argon2i encoder
 RUN apt-get update && apt-get install libsodium-dev
 
-RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd
+#RUN apt-get update && apt-get install -y \
+#        libfreetype6-dev \
+#        libjpeg62-turbo-dev \
+#    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+#    && docker-php-ext-install -j$(nproc) gd
 
 # Install curl
 RUN apt-get install -y libssl-dev libcurl4-openssl-dev pkg-config
@@ -59,11 +64,14 @@ RUN docker-php-ext-install sockets
 RUN docker-php-ext-install pcntl
 
 # Install ftp
-RUN docker-php-ext-install ftp
+#RUN docker-php-ext-install ftp
 
 # Install opcache
 RUN docker-php-ext-install opcache
 
+RUN apt-get update && apt-get install -y \
+    zlib1g-dev \
+    libzip-dev
 # Install zip
 RUN docker-php-ext-install zip
 
