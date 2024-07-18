@@ -65,3 +65,18 @@ if you are need of your docker container (local server) be supported for ssl, fo
  6. if there is no build error and if the containers are created, then you can access your site
     at https://app.local or http://app.local
 
+
+### TIPS: build Image
+Ex:
+Login to the docker hub:
+`docker login`
+
+Build image :latest and another tag:
+`docker build -t theva/php-fpm -t theva/php-fpm:8.2 php-fpm --no-cache`
+
+Push image with **:latest** to the hub
+`docker push theva/php-fpm`
+
+Push image with tag **:8.2** to the hub
+`docker push theva/php-fpm:8.2`
+
