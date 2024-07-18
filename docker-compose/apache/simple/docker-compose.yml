@@ -1,0 +1,45 @@
+services:
+  #*****************************#
+  ##### mysql server #####
+  #*****************************#
+  mysqldb:
+    container_name: MYSITE_MYSQL_SERVER
+    image: mysql:5.7
+    volumes:
+      - $PWD/db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: database_name
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+
+  #*****************************#
+  ### php apache server ###
+  #*****************************#
+  php:
+    container_name: MYSITE_PHP_SERVER
+    image: theva/docker-symfony
+    depends_on:
+      - mysqldb   # your database contaiber service name
+    volumes:
+      - ../www/app:/var/www:cached
+      - $PWD/data/logs/apache:/var/log/apache2:cached
+    ports:
+      - "80:80"
+    restart: always
+  #*****************************#
+  ##### phpMyAdmin ####
+  #*****************************#
+  phpmyadmin:
+    container_name: MYSITE_PHPMYADMIN
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysqldb
+    ports:
+      - 8081:80
+
+# volumes
+volumes:
+  app:
+  db_data:
