@@ -25,8 +25,8 @@ services:
     image: nginx:1.26.0-alpine
     restart: always
     volumes:
-      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/config/symfony.conf:/etc/nginx/sites-enabled/symfony
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/symfony.conf:/etc/nginx/sites-enabled/symfony
       - ./app:/var/www/symfony
     ports:
       - 80:80
